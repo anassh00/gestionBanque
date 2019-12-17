@@ -28,7 +28,7 @@ public interface IBanqueDao {
 		 public List<Employe>  getEmployes();
 		 public List<Groupe>  getGroupes();
 	     public List<Employe> getEmployesGroupe(String codegroupe);
-	 	// public long getNombreOperations(String codeCpte);
-	  //   public List<Operation> consulterOperations(String codeCpte, int position, int nbOp);
+	 	 public long getNombreOperations(String codeCpte);
+	     public List<Operation> consulterOperations(String codeCpte, int position, int nbOp);
 	 //	public long getNombreOperations(String codeCpte);
 }

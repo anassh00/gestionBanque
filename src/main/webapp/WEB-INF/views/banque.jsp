@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/style.css" />
+<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/resources/style1.css" />
 <title>banque</title>
 </head>
   
@@ -104,26 +104,46 @@
 				
 			</f:form>
 		</div>
+   
+	   <div>
+    <table class="table1">
+      <tr>
+        <th>Num</th><th>Type</th><th>date</th> <th>montant</th>
+      </tr>
+      <c:forEach items="${banqueForm.operations }" var="op">
+        <tr>
+          <td>${op.numeroOperation }</td>
+          <td>${op}</td>
+          <td>${op.dateOperation }</td>
+          <td>${op.montant }</td>
+        </tr>
+      </c:forEach>
+    </table>
     <div>
-			<table class="tab1">
-				<tr>
-					<th>Numéro</th><th>Type</th><th>Date</th><th>Montant</th>
-				</tr>
-				<c:forEach items="${ banqueForm.operations }" var="x">
-				<tr>
-					<td>${ x.numeroOperation }</td>
-					<td>${ x }</td>
-					<td>${ x.dateOperation }</td>
-					<td>${ x.montant }</td>
-				</tr>
-				</c:forEach>
-			</table>
-	</div>
+		 <c:forEach begin="0" end="${banqueForm.nbpages-1}" var="p">
+        <c:choose>
+           <c:when test="${p==banqueForm.page}">
+             <span class="current">Page ${p }</span>
+           </c:when>
+           <c:otherwise>
+             <span class="autrePage">
+               <a href="chargerCompte?page=${p}&code=${banqueForm.code}" >Page ${p }</a>
+             </span>
+           </c:otherwise>
+        </c:choose>
+        
+     </c:forEach>
+    </div>
+   </div>
 
 </div>
 	</c:if>
-	
-	
+   
+   <c:if test="${not empty banqueForm.exception }">
+    <div>
+      ${banqueForm.exception}
+    </div>
+   </c:if>
 	
 </body> 
 

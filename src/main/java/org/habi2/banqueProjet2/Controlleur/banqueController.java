@@ -71,10 +71,10 @@ public class banqueController {
 				bf.setTypeCompte(compte.getClass().getSimpleName());
 				bf.setCompte(compte);
 				int pos = bf.getNbLignes() * bf.getPage();				
-			//	List<Operation> ops = metier.consulterOperations(bf.getCode(), pos, bf.getNbLignes());
-			//	bf.setOperations(ops);
-			//	long npOp = metier.getNombreOperations(bf.getCode());
-			//	bf.setNbpages((int)(npOp/bf.getNbLignes())+1);
+				List<Operation> ops = metier.consulterOperations(bf.getCode(), pos, bf.getNbLignes());
+				bf.setOperations(ops);
+				long npOp = metier.getNombreOperations(bf.getCode());
+				bf.setNbpages((int)(npOp/bf.getNbLignes())+1);
 			} catch (Exception e) {
 				bf.setException(e.getMessage());
 			}

@@ -15,7 +15,7 @@ public interface IBanqueMetier {
 			 public Groupe addGroupe(Groupe g);
 			 public void addEmployeToGroupe(Long codeEmp,Long codeGr);
 			 public Compte addCompte(Compte c , Long codeClient ,Long CodeEmploye);
-		     // public Operation addOperation(Operation op , String codeCompte , Long codeEmploye);
+//		      public Operation addOperation(Operation op , String codeCompte , Long codeEmploye);
 		     
 			 
 			 public void verser(double montant, String compte ,Long codeEmploye);
@@ -33,7 +33,7 @@ public interface IBanqueMetier {
 			 public List<Employe>  getEmployes();
 			 public List<Groupe>  getGroupes();
 		     public List<Employe> getEmployesGroupe(String codegroupe);
-		 	// public long getNombreOperations(String codeCpte);
-		//     public List<Operation> consulterOperations(String codeCpte, int pos, int nbOp);
-		// 	public long getNombreOperations(String codeCpte);
+//		 	 public long getNombreOperations(String codeCpte);
+		     public List<Operation> consulterOperations(String codeCpte, int pos, int nbOp);
+		 	public long getNombreOperations(String codeCpte);
 }
