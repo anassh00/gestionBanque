@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import org.habi2.banqueProjet2.entities.Operation;
 
-public class banqueModel{
+public class BanqueForm{
 	@NotEmpty
 	@Size(min=3,max=10)
 	private String code;

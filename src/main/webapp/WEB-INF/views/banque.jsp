@@ -23,34 +23,34 @@
 		</table>
 	</f:form>
 	</div>
-	<c:if test="${not empty banqueModel.exception }">
-				<div>${banqueModel.exception }</div>
+	<c:if test="${not empty banqueForm.exception }">
+				<div>${banqueForm.exception }</div>
 			</c:if>
-	<c:if test="${not empty banqueModel.compte }">
+	<c:if test="${not empty banqueForm.compte }">
 	<div>
 		<table>
 			<tr>
 				<td>Solde :</td>
-				<td>${banqueModel.compte.solde}</td>
+				<td>${banqueForm.compte.solde}</td>
 			</tr>
 			<tr>
 				<td>Date :</td>
-				<td>${banqueModel.compte.dateCreation}</td>
+				<td>${banqueForm.compte.dateCreation}</td>
 			</tr>
 			<tr>
 				<td>Type Compte :</td>
-				<td>${banqueModel.typeCompte}</td>
+				<td>${banqueForm.typeCompte}</td>
 			</tr>
-			<c:if test="${banqueModel.typeCompte=='CompteCourant'}">
+			<c:if test="${banqueForm.typeCompte=='CompteCourant'}">
 				<tr>
 					<td>Découvert :</td>
-					<td>${banqueModel.compte.decouvert}</td>
+					<td>${banqueForm.compte.decouvert}</td>
 				</tr>
 			</c:if>
-			<c:if test="${banqueModel.typeCompte=='CompteEpargne'}">
+			<c:if test="${banqueForm.typeCompte=='CompteEpargne'}">
 				<tr>
 					<td>Taux :</td>
-					<td>${banqueModel.compte.taux}</td>
+					<td>${banqueForm.compte.taux}</td>
 				</tr>
 			</c:if>
 			
@@ -59,7 +59,7 @@
 			<table>
 				<tr>
 					<td>Nom Client :</td>
-					<td>${banqueModel.compte.client.nomClient}</td>
+					<td>${banqueForm.compte.client.nomClient}</td>
 				</tr>
 			</table>
 		</div>
@@ -67,7 +67,7 @@
 			<table>
 				<tr>
 					<td>Nom Employé :</td>
-					<td>${banqueModel.compte.employe.nomEmploye}</td>
+					<td>${banqueForm.compte.employe.nomEmploye}</td>
 				</tr>
 			</table>
 		</div>
@@ -82,14 +82,14 @@
 						<td>Retrait<f:radiobutton path="typeOperation" value="RETRAIT" onclick="this.form.submit()"/></td>
 						<td>Virement<f:radiobutton path="typeOperation" value="VIREMENT" onclick="this.form.submit()"/></td>
 					</tr>
-					<c:if test="${ not empty banqueModel.typeOperation }">
+					<c:if test="${ not empty banqueForm.typeOperation }">
 					
 					    <tr>
 					    	<td>Montant:</td>
 					    	<td><f:input path="montant"/> </td>
 					    	<td><f:errors path="montant"></f:errors> </td>
 					    </tr>
-					 		<c:if test="${ banqueModel.typeOperation == 'VIREMENT' }">
+					 		<c:if test="${ banqueForm.typeOperation == 'VIREMENT' }">
 					 			<tr>
 					 				<td>Compte:</td>
 					 				<td><f:input path="Code2"/></td>
@@ -109,7 +109,7 @@
 				<tr>
 					<th>Numéro</th><th>Type</th><th>Date</th><th>Montant</th>
 				</tr>
-				<c:forEach items="${ banqueModel.operations }" var="x">
+				<c:forEach items="${ banqueForm.operations }" var="x">
 				<tr>
 					<td>${ x.numeroOperation }</td>
 					<td>${ x }</td>

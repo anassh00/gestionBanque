@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import org.habi2.banqueProjet2.entities.Compte;
 import org.habi2.banqueProjet2.entities.Operation;
 import org.habi2.banqueProjet2.metier.IBanqueMetier;
-import org.habi2.banqueProjet2.models.banqueModel;
+import org.habi2.banqueProjet2.models.BanqueForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,12 +25,12 @@ public class banqueController {
 	
 	@RequestMapping(value="/index")
 	public String index(Model model) {
-		model.addAttribute("banqueForm", new banqueModel());
+		model.addAttribute("banqueForm", new BanqueForm());
 		return "banque";
 	}	
 	
 	@RequestMapping(value="/chargerCompte")
-	public String chargerCompte( banqueModel bf,  Model model) {
+	public String chargerCompte( BanqueForm bf,  Model model) {
 		
 	/*	if (bindingResult.hasErrors()) {
 			return "banque";
@@ -41,7 +41,7 @@ public class banqueController {
 	}
 	
 	@RequestMapping(value="/saveOperation")
-	public String saveOperation(@Valid  @ModelAttribute("banqueForm") banqueModel bf) {
+	public String saveOperation(@Valid  @ModelAttribute("banqueForm") BanqueForm bf) {
 		
 			try {
 				/* if (bindingResult.hasErrors()) {
@@ -65,7 +65,7 @@ public class banqueController {
 		return "banque";
     } 
 // a revoir	
-	 public void chargerCompte(banqueModel bf) {
+	 public void chargerCompte(BanqueForm bf) {
 			try {
 				Compte compte = metier.getCompte(bf.getCode());
 				bf.setTypeCompte(compte.getClass().getSimpleName());
